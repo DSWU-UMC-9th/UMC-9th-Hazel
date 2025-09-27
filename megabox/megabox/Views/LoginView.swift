@@ -6,8 +6,13 @@
 //
 
 import SwiftUI
+import Observation
 
 struct LoginView: View {
+    @AppStorage("id") private var id: String = ""
+    @AppStorage("pwd") private var pwd: String = ""
+    @State private var viewModel: LoginViewModel = .init()
+    
     var body: some View {
         VStack {
             Spacer().frame(height: 44)
@@ -35,21 +40,20 @@ struct LoginView: View {
     // 로그인, 비밀번호 입력칸
     private var TextFieldGroup: some View {
         VStack(spacing: 40) {
-            textFieldStyle(text: "아이디")
-            
-            textFieldStyle(text: "비밀번호")
-
-        }
-    }
-    
-    // textfield 함수
-    private func textFieldStyle(text: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(text)
-                .font(.medium16)
-                .foregroundStyle(.gray03)
-            Divider()
-                .background(.gray02)
+            VStack(spacing: 4) {
+                TextField("아이디", text: $viewModel.loginModel.id)
+                    .font(.medium16)
+                    .foregroundStyle(.gray03)
+                Divider()
+                    .background(.gray02)
+            }
+            VStack(spacing: 4) {
+                SecureField("비밀번호", text: $viewModel.loginModel.pwd)
+                    .font(.medium16)
+                    .foregroundStyle(.gray03)
+                Divider()
+                    .background(.gray02)
+            }
         }
     }
     
@@ -58,6 +62,9 @@ struct LoginView: View {
         VStack(spacing: 17) {
             Button(action: {
                 print("로그인")
+                self.id = viewModel.loginModel.id
+                self.pwd = viewModel.loginModel.pwd
+                print("\(id) \(pwd)")
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
