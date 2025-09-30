@@ -11,7 +11,7 @@ import SwiftUI
 struct megaboxApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            UserInfoView()
         }
     }
 }
