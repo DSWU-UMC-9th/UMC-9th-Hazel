@@ -12,24 +12,31 @@ struct UserInfoView: View {
     @State private var viewModel_info: UserInfoViewModel = .init()
     
     var body: some View {
-        VStack {
-            Spacer().frame(height: 103)
-            ProfileHeader
-            Spacer().frame(height: 15)
-            ClubMemberShip
-            Spacer().frame(height: 33)
-            StatusInformation
-            Spacer().frame(height: 33)
-            ButtonGroup
-            Spacer()
+        ZStack {
+            NavigationStack {
+                VStack {
+                    Spacer().frame(height: 103)
+                    ProfileHeader
+                    Spacer().frame(height: 15)
+                    ClubMemberShip
+                    Spacer().frame(height: 33)
+                    StatusInformation
+                    Spacer().frame(height: 33)
+                    ButtonGroup
+                    Spacer()
+                }
+                .padding(.horizontal, 14)
+                .frame(maxWidth: 410)
+            }
         }
-        .padding(.horizontal, 14)
     }
     
     private var ProfileHeader: some View {
         VStack {
             HStack {
-                Text("\(userName.first!)*\(userName.last!)님")
+                let name = userName.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                Text("\(String(userName.prefix(1)))" + "*" + "\(name.suffix(1))")
                     .font(.bold24)
                     .foregroundStyle(.black)
                 
@@ -45,9 +52,7 @@ struct UserInfoView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    print("회원정보 버튼 클릭")
-                }) {
+                NavigationLink(destination: UserInfoManagementView()){
                     Text("회원정보")
                         .font(.semiBold14)
                         .foregroundStyle(.white)
@@ -56,9 +61,10 @@ struct UserInfoView: View {
                         .background {
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(.gray07)
-                        }
+                    }
                 }
             }
+            
             HStack(spacing: 9) {
                 Text("멤버쉽 포인트")
                     .font(.semiBold14)
