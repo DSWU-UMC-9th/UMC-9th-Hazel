@@ -11,23 +11,30 @@ import Observation
 struct LoginView: View {
     @AppStorage("id") private var id: String = ""
     @AppStorage("pwd") private var pwd: String = ""
+    @AppStorage("userName") private var userName: String = ""
     @State private var viewModel: LoginViewModel = .init()
+    @State private var viewModel_info: UserInfoViewModel = .init()
+    @State private var isLoginSuccess: Bool = false
+    @State private var showErrorAlert: Bool = false
     
     var body: some View {
-        VStack {
-            Spacer().frame(height: 44)
-            TitleTextGroup
-            Spacer() // 자동
-            TextFieldGroup
-            Spacer().frame(height: 75)
-            ButtonGroup
-            Spacer().frame(height: 35)
-            SocialLoginButtonGroup
-            Spacer().frame(height: 39)
-            UMCGroup
-            Spacer().frame(height: 91)
+        NavigationStack {
+            VStack {
+                Spacer().frame(height: 44)
+                TitleTextGroup
+                Spacer() // 자동
+                TextFieldGroup
+                Spacer().frame(height: 75)
+                ButtonGroup
+                Spacer().frame(height: 35)
+                SocialLoginButtonGroup
+                Spacer().frame(height: 39)
+                UMCGroup
+                Spacer().frame(height: 91)
+            }
+            .padding(.horizontal, 16)
+            .navigationDestination(isPresented: $isLoginSuccess) {HomeView()}
         }
-        .padding(.horizontal, 16)
     }
     
     // 맨 위 로그인 제목
@@ -62,9 +69,19 @@ struct LoginView: View {
         VStack(spacing: 17) {
             Button(action: {
                 print("로그인")
-                self.id = viewModel.loginModel.id
-                self.pwd = viewModel.loginModel.pwd
-                print("\(id) \(pwd)")
+                let inputId = viewModel.loginModel.id
+                let inputPwd = viewModel.loginModel.pwd
+                print("입력 : \(inputId) \(inputPwd)")
+                
+                print("원래꺼 \(id)")
+                
+                if inputId == id && inputPwd == pwd && !pwd.isEmpty {
+                    print("로그인 성공")
+                    isLoginSuccess = true
+                } else {
+                    print("로그인 실패")
+                    showErrorAlert = true
+                }
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -78,7 +95,10 @@ struct LoginView: View {
             }
             
             Button(action: {
-                print("회원가입")
+                id = viewModel.loginModel.id
+                pwd = viewModel.loginModel.pwd
+                print("회원가입 완료 — \(id), \(pwd) 저장됨")
+                self.userName = "임의"
             }) {
                 Text("회원가입")
                     .font(.medium13)

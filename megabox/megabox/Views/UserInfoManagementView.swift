@@ -10,8 +10,8 @@ import SwiftUI
 struct UserInfoManagementView: View {
     @AppStorage("userName") private var userName: String = ""
     @AppStorage("id") private var id: String = ""
-    @State private var viewModel_login: LoginViewModel = .init()
-    @State private var viewModel_info: UserInfoViewModel = .init()
+
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         VStack {
@@ -21,6 +21,7 @@ struct UserInfoManagementView: View {
             Spacer()
         }
         .padding(.horizontal, 16)
+        .navigationBarBackButtonHidden()
     }
     
     // 맨 위 헤더
@@ -28,6 +29,7 @@ struct UserInfoManagementView: View {
         HStack {
             Button (action: {
                 print("뒤로 가기")
+                dismiss()
             }) {
                 Image(.leading)
                     .foregroundStyle(.black)
@@ -61,15 +63,14 @@ struct UserInfoManagementView: View {
                 }
                 VStack(alignment: .leading, spacing: 3) {
                     HStack {
-                        TextField("회원 이름", text: $viewModel_info.userInfoModel.userName)
+                        TextField("회원 이름", text: $userName)
                             .font(.medium18)
                             .foregroundStyle(Color.black)
                         
                         Spacer()
                         
                         Button {
-                            self.userName = viewModel_info.userInfoModel.userName
-                            print("\(id), \(userName)")
+                            print("변경 : \(id), \(userName)")
                         } label: {
                             Text("변경")
                                 .font(.medium10)
