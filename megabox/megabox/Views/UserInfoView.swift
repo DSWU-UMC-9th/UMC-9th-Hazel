@@ -12,22 +12,18 @@ struct UserInfoView: View {
     @State private var viewModel_info: UserInfoViewModel = .init()
     
     var body: some View {
-        ZStack {
-            NavigationStack {
-                VStack {
-                    Spacer().frame(height: 103)
+        NavigationStack {
+            VStack(spacing: 33) {
+                VStack(spacing: 15) {
                     ProfileHeader
-                    Spacer().frame(height: 15)
                     ClubMemberShip
-                    Spacer().frame(height: 33)
-                    StatusInformation
-                    Spacer().frame(height: 33)
-                    ButtonGroup
-                    Spacer()
                 }
-                .padding(.horizontal, 14)
-                .frame(maxWidth: 410)
+                StatusInformation
+                ButtonGroup
+                Spacer()
             }
+            .padding(.top, 60)
+            .padding(.horizontal, 16)
         }
     }
     
@@ -107,44 +103,45 @@ struct UserInfoView: View {
     
     private var StatusInformation: some View {
         HStack(spacing:0) {
-            Status(text: "쿠폰", value: "2")
+            
+            makeStatus(title: "쿠폰", count: 2)
             
             Divider()
-                .padding(.horizontal, 43)
+                .foregroundStyle(.gray03)
+                .frame(width: 1, height: 31)
             
-            Status(text: "스토어 교환권", value: "0")
+            makeStatus(title: "스토어 교환권", count: 0)
             
             Divider()
-                .padding(.horizontal, 43)
+                .foregroundStyle(.gray03)
+                .frame(width: 1, height: 31)
             
-            Status(text: "모바일 티켓", value: "0")
+            makeStatus(title: "모바일 티켓", count: 0)
+            
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, 24)
         .padding(.vertical, 12)
         .background{
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.gray02, lineWidth: 1)
         }
-        .frame(maxWidth: .infinity, maxHeight: 76)
+        
     }
     
-    private struct Status: View {
-        var text: String
-        var value: String
-        
-        var body: some View {
-            VStack(spacing: 9){
-                Text(text)
-                    .font(.semiBold16)
-                    .foregroundStyle(.gray02)
-                    .fixedSize()
-                    
-                
-                Text(value)
-                    .font(.semiBold18)
-                    .foregroundStyle(.black)
-            }
+    private func makeStatus(title: String, count: Int) -> some View {
+        VStack(spacing: 8){
+            Text(title)
+                .font(.semiBold16)
+                .foregroundStyle(.gray02)
+                .fixedSize()
+            
+            Text(String(count))
+                .font(.semiBold18)
+                .foregroundStyle(.black)
+                .fixedSize()
         }
+        .frame(maxWidth: .infinity)
     }
     
     private var ButtonGroup: some View {
