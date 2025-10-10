@@ -25,7 +25,6 @@ struct HomeView: View {
                     FunnyMovieCardGroup
                 }
             }
-            .padding()
             .navigationBarBackButtonHidden()
         }
     }
@@ -45,6 +44,7 @@ struct HomeView: View {
             .foregroundStyle(.gray04)
             .font(.semiBold24)
         }
+        .padding(.leading, 16)
     }
     
     private var MovieCardGroup: some View {
@@ -78,10 +78,10 @@ struct HomeView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 2)
+            .padding(.leading, 18)
             
             ScrollView(.horizontal) {
-                LazyHStack {
+                LazyHStack(spacing:24) {
                     ForEach(viewModel.movieCard.indices, id: \.self){ index in
                         NavigationLink(
                             destination: MovieDetailView(
@@ -94,10 +94,10 @@ struct HomeView: View {
                         }
                     }
                 }
+                .padding(.horizontal, 16)
             }
-            .padding(.leading, 2)
             .padding(.bottom, 37)
-            
+            .scrollIndicators(.hidden)
         }
     }
     
@@ -117,11 +117,13 @@ struct HomeView: View {
                 }
                 
                 Image(.funnyMovie)
+                    .resizable()
             }
             ForEach(viewModel.funnyMovieCard.indices, id: \.self){index in
                 FunnyMovieCardView(funnyMovie:viewModel.funnyMovieCard[index])
             }
         }
+        .padding(.horizontal, 16)
     }
     
     
@@ -178,7 +180,7 @@ struct FunnyMovieCardView: View {
             VStack(alignment: .leading) {
                 Text(funnyMovie.title)
                     .font(.semiBold18)
-                    .frame(width: 285, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                 Spacer()
                 
