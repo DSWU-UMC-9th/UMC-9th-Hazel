@@ -33,7 +33,7 @@ struct LoginView: View {
                 Spacer().frame(height: 91)
             }
             .padding(.horizontal, 16)
-            .navigationDestination(isPresented: $isLoginSuccess) {HomeView()}
+            .navigationDestination(isPresented: $isLoginSuccess) {TabBar()}
         }
     }
     
