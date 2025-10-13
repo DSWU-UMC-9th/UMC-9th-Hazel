@@ -20,6 +20,11 @@ final class MovieReservationViewModel: ObservableObject {
     
     @Published var filteredScreenings: [Screening] = []        // 조건에 맞는 상영정보 결과
     
+    @Published var query: String = ""
+    @Published var results: [Movie] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+    
     // UI 상태
     @Published var isTheaterEnabled: Bool = false
     @Published var isDayEnabled: Bool = false
@@ -30,19 +35,39 @@ final class MovieReservationViewModel: ObservableObject {
     init() {
         setupDummyData()
         setupBindings()
+        
+        $query
+            .debounce(for: .milliseconds(400), scheduler: DispatchQueue.main)
+            .removeDuplicates()
+            .handleEvents(receiveOutput: { [weak self] _ in
+                self?.errorMessage = nil
+            })
+            .flatMap { query in
+                self.search(query: query)
+            }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                if case .failure(let err) = completion {
+                    self?.errorMessage = "검색 실패: \(err.localizedDescription)"
+                    self?.results = []
+                }
+            } receiveValue: { [weak self] items in
+                self?.results = items
+            }
+            .store(in: &bag)
     }
     
-    // MARK: - Dummy Data
+    // MARK: - 더미데이터
     private func setupDummyData() {
         let today = Date()
         
         // 영화 더미 데이터
-        let movie1 = Movie(title: "어쩔수가 없다", poster: Image("poster1"))
+        let movie1 = Movie(title: "어쩔수가 없다 보스", poster: Image("poster1"))
         let movie2 = Movie(title: "극장판 귀멸의 칼날 : 무한성편", poster: Image("poster2"))
         let movie3 = Movie(title: "F1 더 무비", poster: Image("poster3"))
         let movie4 = Movie(title: "얼굴", poster: Image("poster4"))
         let movie5 = Movie(title: "모노노케 히메", poster: Image("poster5"))
-        let movie6 = Movie(title: "야당", poster: Image("poster6"))
+        let movie6 = Movie(title: "야당 보스", poster: Image("poster6"))
         let movie7 = Movie(title: "보스", poster: Image("poster7"))
         let movie8 = Movie(title: "The Roses", poster: Image("poster8"))
 
@@ -169,7 +194,7 @@ final class MovieReservationViewModel: ObservableObject {
             .store(in: &bag)
     }
     
-    // MARK: - Filter Logic
+    // MARK: - Screenings 필터
     func filterScreenings() {
         guard let movie = selectedMovie, !selectedTheaters.isEmpty else {
             filteredScreenings = []
@@ -183,5 +208,32 @@ final class MovieReservationViewModel: ObservableObject {
             calendar.isDate(screening.date, inSameDayAs: selectedDate)
         }
     }
-
+    
+    // MARK: - search 함수
+    private func search(query: String) -> AnyPublisher<[Movie], Error> {
+        return Future<[Movie], Error> { [weak self] promise in
+            let delay = Double(Int.random(in: 300...700)) / 1000.0
+            guard let self else { return }
+            
+            DispatchQueue.global().asyncAfter(deadline: .now() + delay) {
+                let filtered = self.movies.filter {
+                    $0.title.lowercased().contains(query.lowercased())
+                }
+                promise(.success(filtered))
+            }
+        }
+        .handleEvents(
+            receiveSubscription: { _ in
+                DispatchQueue.main.async {
+                    self.isLoading = true
+                }
+            },
+            receiveCompletion: { _ in
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                }
+            }
+        )
+        .eraseToAnyPublisher()
+    }
 }
