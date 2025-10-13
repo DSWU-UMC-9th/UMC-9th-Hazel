@@ -12,6 +12,7 @@ struct MovieReservationView : View {
     
     @StateObject private var viewModel = MovieReservationViewModel()
     @State private var calendarViewModel = CalendarViewModel()
+    @State private var isMovieSearchSheetPresented = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,6 +27,13 @@ struct MovieReservationView : View {
             .frame(maxWidth: .infinity)
         }
         .ignoresSafeArea(edges: .top)
+        .sheet(isPresented: $isMovieSearchSheetPresented) {
+            MovieSearchSheet(viewModel: viewModel) { selected in
+                viewModel.selectedMovie = selected
+                isMovieSearchSheetPresented = false
+            }
+                .presentationDragIndicator(.visible)
+        }
     }
     
     // MARK: - 상단 네비게이션 바
@@ -63,6 +71,7 @@ struct MovieReservationView : View {
                 }
                 
                 Button(action: {
+                    isMovieSearchSheetPresented.toggle()
                     print("전체영화 버튼 클릭")
                 }) {
                     ZStack {
