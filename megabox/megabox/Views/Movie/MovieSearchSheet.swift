@@ -34,20 +34,9 @@ struct MovieSearchSheet: View {
                     repeating: GridItem(.flexible(), alignment: .top),
                     count: 3
                 )
-
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 36) {
-                    ForEach(viewModel.results) { movie in
-                        Button {
-                            onSelect(movie)
-                        } label: {
-                            MovieCard(movie: movie)
-                        }
-                    }
-                    .padding(.horizontal, 16)
-                }
                 
-                if viewModel.query.isEmpty {
-                    LazyVGrid(columns: columns, alignment: .leading, spacing: 36) {
+                LazyVGrid(columns: columns, alignment: .leading, spacing: 36) {
+                    if viewModel.query.isEmpty { // 검색어 없을 때 -> 전체 영화 목록 조회
                         ForEach(viewModel.movies) { movie in
                             Button {
                                 onSelect(movie)
@@ -55,8 +44,18 @@ struct MovieSearchSheet: View {
                                 MovieCard(movie: movie)
                             }
                         }
+                        .padding(.horizontal, 16)
+                    } else {
+                        // 검색어 있을 때 -> 검색 결과에 맞는 영화 목록 조회
+                        ForEach(viewModel.results) { movie in
+                            Button {
+                                onSelect(movie)
+                            } label: {
+                                MovieCard(movie: movie)
+                            }
+                        }
+                        .padding(.horizontal, 16)
                     }
-                    .padding(.horizontal, 16)
                 }
                 
                 Spacer()
