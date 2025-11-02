@@ -214,49 +214,45 @@ struct MovieReservationView : View {
     private var ScreeningSection: some View {
         VStack(alignment: .leading, spacing: 29) {
 
-            // MARK: - 선택된 극장 for문
+            // 선택된 극장만 표시
             ForEach(viewModel.theaters.filter { viewModel.selectedTheaters.contains($0.name) }) { theater in
-                let theaterScreenings = viewModel.filteredScreenings.filter {
-                    $0.theater.id == theater.id
-                }
+                // 변수 미리 정의 (컴파일 최적화용)
+                let theaterName = theater.name
+                let screeningsForTheater = viewModel.filteredScreenings.filter { $0.theater.name == theaterName }
+
+                // 고유한 상영관 이름만 추출
+                let uniqueHallNames = Array(Set(screeningsForTheater.map { $0.hall.name })).sorted()
 
                 VStack(alignment: .leading, spacing: 21) {
-                    Text(theater.name)
+                    Text(theaterName)
                         .font(.bold18)
                         .frame(maxWidth: .infinity, alignment: .leading)
 
-                    // MARK: - 상영관 for문
-                    if theaterScreenings.isEmpty {
+                    if screeningsForTheater.isEmpty {
                         Text("선택한 극장에 상영시간표가 없습니다")
                             .font(.semiBold18)
                             .foregroundStyle(.gray03)
                             .frame(maxWidth: .infinity, alignment: .center)
                     } else {
-                        ForEach(theater.halls, id: \.id) { hall in
-                            let hallScreenings = theaterScreenings.filter {
-                                $0.hall.id == hall.id
-                            }
+                        ForEach(uniqueHallNames, id: \.self) { hallName in
+                            let hallScreenings = screeningsForTheater.filter { $0.hall.name == hallName }
+                            let hallType = hallScreenings.first?.hall.screenType.rawValue ?? ""
 
-                            if !hallScreenings.isEmpty {
-                                VStack(alignment: .leading, spacing: 21) {
-                                    HStack {
-                                        Text(hall.name)
-                                            .font(.bold18)
-                                        Spacer()
-                                        Text(hall.screenType.rawValue)
-                                            .font(.bold18)
-                                    }
+                            VStack(alignment: .leading, spacing: 21) {
+                                HStack {
+                                    Text(hallName)
+                                        .font(.bold18)
+                                    Spacer()
+                                    Text(hallType)
+                                        .font(.bold18)
+                                }
 
-                                    // MARK: - 상영 정보 카드
-                                    let columns: [GridItem] = Array(
-                                        repeating: GridItem(.flexible(), alignment: .top),
-                                        count: 4
-                                    )
+                                // 상영 정보 카드 4열 그리드
+                                let columns: [GridItem] = Array( repeating: GridItem(.flexible(), alignment: .top), count: 4 )
 
-                                    LazyVGrid(columns: columns, alignment: .leading, spacing: 19) {
-                                        ForEach(hallScreenings, id: \.id) { screening in
-                                            ScreeningCard(screening: screening)
-                                        }
+                                LazyVGrid(columns: columns, alignment: .leading, spacing: 19) {
+                                    ForEach(hallScreenings, id: \.id) { screening in
+                                        ScreeningCard(screening: screening)
                                     }
                                 }
                             }
