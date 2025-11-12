@@ -10,7 +10,17 @@ import Alamofire
 
 final class ServiceManager {
     
-    private let urlString: String = "http://localhost:8080/person"
+    static let shared = ServiceManager()
+    
+    private let session: Session
+    private let urlString: String = "\(Config.baseURL)/person"
+    
+    init() {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        
+        self.session = Session(configuration: configuration)
+    }
     
     // MARK: - GET 요청
     func getUser(name: String) async {
@@ -19,7 +29,7 @@ final class ServiceManager {
         ]
         
         do {
-            let user = try await AF.request(urlString, method: .get, parameters: parameters, encoding: URLEncoding.default)
+            let user = try await session.request(urlString, method: .get, parameters: parameters, encoding: URLEncoding.default)
                 .serializingDecodable(UserDTO.self)
                 .value
             print("GET 성공:", user)
@@ -31,7 +41,7 @@ final class ServiceManager {
     // MARK: - POST 요청
     func postUser(user: UserDTO) async {
         do {
-            let response = try await AF.request(urlString, method: .post, parameters: user, encoder: JSONParameterEncoder.default)
+            let response = try await session.request(urlString, method: .post, parameters: user, encoder: JSONParameterEncoder.default)
                 .serializingString()
                 .value
             print("POST 성공:", response)
@@ -43,7 +53,7 @@ final class ServiceManager {
     // MARK: - PUT 요청
     func putUser(user: UserDTO) async {
         do {
-            let response = try await AF.request(urlString, method: .put, parameters: user, encoder: JSONParameterEncoder.default)
+            let response = try await session.request(urlString, method: .put, parameters: user, encoder: JSONParameterEncoder.default)
                 .serializingString()
                 .value
             print("PUT 성공:", response)
@@ -59,7 +69,7 @@ final class ServiceManager {
         ]
         
         do {
-            let response = try await AF.request(urlString, method: .patch, parameters: parameters, encoding: JSONEncoding.default)
+            let response = try await session.request(urlString, method: .patch, parameters: parameters, encoding: JSONEncoding.default)
                 .serializingString()
                 .value
             print("PATCH 성공:", response)
@@ -75,7 +85,7 @@ final class ServiceManager {
         ]
         
         do {
-            let response = try await AF.request(urlString, method: .delete, parameters: parameters, encoding: URLEncoding.default)
+            let response = try await session.request(urlString, method: .delete, parameters: parameters, encoding: URLEncoding.default)
                 .serializingString()
                 .value
             print("DELETE 성공:", response)
