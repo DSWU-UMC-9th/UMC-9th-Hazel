@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct UserInfoManagementView: View {
-    // 현재 저장된 아이디
+    let loginType: LoginType?
+    @Binding var userName: String
+    @Environment(\.dismiss) var dismiss
+    
     private var userId: String {
-        KeychainService.shared.load(account: "userId", service: "Megabox") ?? "익명"
+        switch loginType {
+        case .local(let id):
+            return id
+        case .kakao(let id):
+            return id
+        default:
+            return "익명"
+        }
     }
     
-    @Binding var userName: String
-
-    @Environment(\.dismiss) var dismiss
-
     var body: some View {
         VStack {
             Header
@@ -97,15 +103,32 @@ struct UserInfoManagementView: View {
     
     // 이름 변경 -> 저장 함수
     private func saveUserNameToKeychain() {
-        KeychainService.shared.savePasswordToKeychain(
-            account: "userName",
-            service: "Megabox",
-            password: userName
-        )
-        print("✅ Keychain에 이름 저장 완료: \(userName)")
+        switch loginType {
+        case .local(let id):
+            KeychainService.shared.savePasswordToKeychain(
+                account: "userName_\(id)",
+                service: "Megabox",
+                password: userName
+            )
+
+        case .kakao:
+            KeychainService.shared.savePasswordToKeychain(
+                account: "userName_kakao",
+                service: "Megabox",
+                password: userName
+            )
+
+        default:
+            break
+        }
+
+        print("이름 저장 완료:", userName)
     }
 }
 
 #Preview {
-    UserInfoManagementView(userName: .constant("익명"))
+    UserInfoManagementView(
+        loginType: .local(id: "test123"),
+        userName: .constant("익명")
+    )
 }

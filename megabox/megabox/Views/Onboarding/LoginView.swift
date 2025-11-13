@@ -7,17 +7,13 @@
 
 import SwiftUI
 import Observation
+import KakaoSDKUser
 
 struct LoginView: View {
-    @State private var viewModel: LoginViewModel = .init()
-    @State private var isLoginSuccess: Bool = false
+    @StateObject private var viewModel = LoginViewModel()
+
     @State private var showErrorAlert: Bool = false
-    
-    let keychain = KeychainService.shared
-    let account = "userId"
-    let service = "Megabox"
-    let password = "userPassword"
-    let userName = "익명"
+
     
     var body: some View {
         NavigationStack {
@@ -35,9 +31,11 @@ struct LoginView: View {
                 Spacer().frame(height: 91)
             }
             .padding(.horizontal, 16)
-            .navigationDestination(isPresented: $isLoginSuccess) {TabBar()}
+            .navigationDestination(isPresented: $viewModel.isLoginSuccess) {
+                TabBar(loginType: viewModel.loginType)
+            }
             .onAppear {
-                autoLoginIfPossible()
+//                autoLoginIfPossible()
             }
         }
     }
@@ -73,7 +71,7 @@ struct LoginView: View {
     private var ButtonGroup: some View {
         VStack(spacing: 17) {
             Button(action: {
-                userLogin()
+                viewModel.userLogin()
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -87,7 +85,7 @@ struct LoginView: View {
             }
             
             Button(action: {
-                userSignup()
+                viewModel.userSignup()
             }) {
                 Text("회원가입")
                     .font(.medium13)
@@ -96,51 +94,15 @@ struct LoginView: View {
         }
     }
     
-    // 유저 로그인 로직
-    private func userLogin() {
-        guard let savedId = keychain.load(account: "userId", service: service),
-              let savedPwd = keychain.load(account: "userPwd", service: service) else {
-            print("Keychain에 저장된 정보 없음")
-            showErrorAlert = true
-            return
-        }
-        
-        let inputId = viewModel.loginModel.id
-        let inputPwd = viewModel.loginModel.pwd
-        
-        if inputId == savedId && inputPwd == savedPwd {
-            print("로그인 성공")
-            isLoginSuccess = true
-        } else {
-            print("로그인 실패")
-            showErrorAlert = true
-        }
-    }
-    
-    // 유저 회원가입 로직
-    private func userSignup() {
-        let id = viewModel.loginModel.id
-        let pwd = viewModel.loginModel.pwd
-        
-        guard !id.isEmpty, !pwd.isEmpty else {
-            print("입력 누락")
-            return
-        }
-        
-        // Keychain에 각각 저장되게
-        keychain.savePasswordToKeychain(account: "userId", service: service, password: id)
-        keychain.savePasswordToKeychain(account: "userPwd", service: service, password: pwd)
-        keychain.savePasswordToKeychain(account: "userName", service: service, password: userName)
-        
-        print("회원가입 완료 — Keychain에 \(id), \(pwd), \(userName) 저장됨")
-    }
-    
     // 자동 로그인
     private func autoLoginIfPossible() {
+        let keychain = KeychainService.shared
+        let service = "Megabox"
+        
         if let _ = keychain.load(account: "userId", service: service),
            let _ = keychain.load(account: "userPwd", service: service) {
             print("자동 로그인 성공")
-            isLoginSuccess = true
+            viewModel.isLoginSuccess = true
         } else {
             print("자동 로그인 정보 없음")
         }
@@ -155,6 +117,7 @@ struct LoginView: View {
                 Image(.naverLoginButton)
             }
             Button(action: {
+                viewModel.kakaoLogin()
                 print("카카오 로그인")
             }) {
                 Image(.kakaoLoginButton)
