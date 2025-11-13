@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct UserInfoView: View {
-    @AppStorage("userName") private var userName: String = ""
-    @State private var viewModel_info: UserInfoViewModel = .init()
+    @State private var userName: String =
+        KeychainService.shared.load(account: "userName", service: "Megabox") ?? "익명"
     
     var body: some View {
         NavigationStack {
@@ -48,7 +48,7 @@ struct UserInfoView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: UserInfoManagementView()){
+                NavigationLink(destination: UserInfoManagementView(userName: $userName)){
                     Text("회원정보")
                         .font(.semiBold14)
                         .foregroundStyle(.white)

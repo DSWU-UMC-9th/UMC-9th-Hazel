@@ -5,10 +5,10 @@
 //  Created by 황민지 on 9/27/25.
 //
 
-// userName 정의
+// keychain 등록 -> 로그인 아이디, 비밀번호 정의
 import Foundation
-import SwiftUI
 
-struct UserInfoModel {
-    var userName: String = ""
+struct UserInfoModel :Codable{
+    var id: String
+    var password: String
 }

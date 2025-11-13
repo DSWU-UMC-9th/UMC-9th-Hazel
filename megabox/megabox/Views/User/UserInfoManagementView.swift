@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct UserInfoManagementView: View {
-    @AppStorage("userName") private var userName: String = ""
-    @AppStorage("id") private var id: String = ""
+    // 현재 저장된 아이디
+    private var userId: String {
+        KeychainService.shared.load(account: "userId", service: "Megabox") ?? "익명"
+    }
+    
+    @Binding var userName: String
 
     @Environment(\.dismiss) var dismiss
 
@@ -55,7 +59,7 @@ struct UserInfoManagementView: View {
             
             VStack(spacing: 24) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text("\(id)")
+                    Text("\(userId)")
                         .font(.medium18)
                         .foregroundStyle(Color.black)
                     Divider()
@@ -70,7 +74,7 @@ struct UserInfoManagementView: View {
                         Spacer()
                         
                         Button {
-                            print("변경 : \(id), \(userName)")
+                            saveUserNameToKeychain()
                         } label: {
                             Text("변경")
                                 .font(.medium10)
@@ -90,8 +94,18 @@ struct UserInfoManagementView: View {
             }
         }
     }
+    
+    // 이름 변경 -> 저장 함수
+    private func saveUserNameToKeychain() {
+        KeychainService.shared.savePasswordToKeychain(
+            account: "userName",
+            service: "Megabox",
+            password: userName
+        )
+        print("✅ Keychain에 이름 저장 완료: \(userName)")
+    }
 }
 
 #Preview {
-    UserInfoManagementView()
+    UserInfoManagementView(userName: .constant("익명"))
 }
