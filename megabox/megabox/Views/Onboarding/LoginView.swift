@@ -7,15 +7,13 @@
 
 import SwiftUI
 import Observation
+import KakaoSDKUser
 
 struct LoginView: View {
-    @AppStorage("id") private var id: String = ""
-    @AppStorage("pwd") private var pwd: String = ""
-    @AppStorage("userName") private var userName: String = ""
-    @State private var viewModel: LoginViewModel = .init()
-    @State private var viewModel_info: UserInfoViewModel = .init()
-    @State private var isLoginSuccess: Bool = false
+    @StateObject private var viewModel = LoginViewModel()
+
     @State private var showErrorAlert: Bool = false
+
     
     var body: some View {
         NavigationStack {
@@ -33,7 +31,12 @@ struct LoginView: View {
                 Spacer().frame(height: 91)
             }
             .padding(.horizontal, 16)
-            .navigationDestination(isPresented: $isLoginSuccess) {TabBar()}
+            .navigationDestination(isPresented: $viewModel.isLoginSuccess) {
+                TabBar(loginType: viewModel.loginType)
+            }
+            .onAppear {
+//                autoLoginIfPossible()
+            }
         }
     }
     
@@ -68,20 +71,7 @@ struct LoginView: View {
     private var ButtonGroup: some View {
         VStack(spacing: 17) {
             Button(action: {
-                print("로그인")
-                let inputId = viewModel.loginModel.id
-                let inputPwd = viewModel.loginModel.pwd
-                print("입력 : \(inputId) \(inputPwd)")
-                
-                print("원래꺼 \(id)")
-                
-                if inputId == id && inputPwd == pwd && !pwd.isEmpty {
-                    print("로그인 성공")
-                    isLoginSuccess = true
-                } else {
-                    print("로그인 실패")
-                    showErrorAlert = true
-                }
+                viewModel.userLogin()
             }) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
@@ -95,15 +85,26 @@ struct LoginView: View {
             }
             
             Button(action: {
-                id = viewModel.loginModel.id
-                pwd = viewModel.loginModel.pwd
-                print("회원가입 완료 — \(id), \(pwd) 저장됨")
-                self.userName = "임의"
+                viewModel.userSignup()
             }) {
                 Text("회원가입")
                     .font(.medium13)
                     .foregroundStyle(.gray04)
             }
+        }
+    }
+    
+    // 자동 로그인
+    private func autoLoginIfPossible() {
+        let keychain = KeychainService.shared
+        let service = "Megabox"
+        
+        if let _ = keychain.load(account: "userId", service: service),
+           let _ = keychain.load(account: "userPwd", service: service) {
+            print("자동 로그인 성공")
+            viewModel.isLoginSuccess = true
+        } else {
+            print("자동 로그인 정보 없음")
         }
     }
     
@@ -116,6 +117,7 @@ struct LoginView: View {
                 Image(.naverLoginButton)
             }
             Button(action: {
+                viewModel.kakaoLogin()
                 print("카카오 로그인")
             }) {
                 Image(.kakaoLoginButton)

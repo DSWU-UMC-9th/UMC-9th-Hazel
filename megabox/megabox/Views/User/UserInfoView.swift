@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct UserInfoView: View {
-    @AppStorage("userName") private var userName: String = ""
-    @State private var viewModel_info: UserInfoViewModel = .init()
+    let loginType: LoginType?
+
+    @State private var userName: String = "익명"
     
     var body: some View {
         NavigationStack {
@@ -24,6 +25,28 @@ struct UserInfoView: View {
             }
             .padding(.top, 60)
             .padding(.horizontal, 16)
+            .onAppear {
+                loadUserName()
+            }
+        }
+    }
+    
+    private func loadUserName() {
+        switch loginType {
+        case .local(let id):
+            userName = KeychainService.shared.load(
+                account: "userName_\(id)",
+                service: "Megabox"
+            ) ?? "익명"
+
+        case .kakao:
+            userName = KeychainService.shared.load(
+                account: "userName_kakao",
+                service: "Megabox"
+            ) ?? "익명"
+
+        case .none:
+            userName = "익명"
         }
     }
     
@@ -48,7 +71,7 @@ struct UserInfoView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: UserInfoManagementView()){
+                NavigationLink(destination: UserInfoManagementView(loginType: loginType, userName: $userName)){
                     Text("회원정보")
                         .font(.semiBold14)
                         .foregroundStyle(.white)
@@ -185,5 +208,5 @@ struct UserInfoView: View {
 }
 
 #Preview {
-    UserInfoView()
+    UserInfoView(loginType: .local(id: "test"))
 }

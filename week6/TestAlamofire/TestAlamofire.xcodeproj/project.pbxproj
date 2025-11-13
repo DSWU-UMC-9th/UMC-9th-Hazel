@@ -7,94 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		593AAF6B2EC5AF0B001EB388 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF6A2EC5AF0B001EB388 /* Alamofire */; };
-		593AAF6E2EC5AF55001EB388 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF6D2EC5AF55001EB388 /* KakaoSDK */; };
-		593AAF702EC5AF55001EB388 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF6F2EC5AF55001EB388 /* KakaoSDKAuth */; };
-		593AAF722EC5AF55001EB388 /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF712EC5AF55001EB388 /* KakaoSDKCert */; };
-		593AAF742EC5AF55001EB388 /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF732EC5AF55001EB388 /* KakaoSDKCertCore */; };
-		593AAF762EC5AF55001EB388 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF752EC5AF55001EB388 /* KakaoSDKCommon */; };
-		593AAF782EC5AF55001EB388 /* KakaoSDKFriend in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF772EC5AF55001EB388 /* KakaoSDKFriend */; };
-		593AAF7A2EC5AF55001EB388 /* KakaoSDKFriendCore in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF792EC5AF55001EB388 /* KakaoSDKFriendCore */; };
-		593AAF7C2EC5AF55001EB388 /* KakaoSDKNavi in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF7B2EC5AF55001EB388 /* KakaoSDKNavi */; };
-		593AAF7E2EC5AF55001EB388 /* KakaoSDKShare in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF7D2EC5AF55001EB388 /* KakaoSDKShare */; };
-		593AAF802EC5AF55001EB388 /* KakaoSDKTalk in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF7F2EC5AF55001EB388 /* KakaoSDKTalk */; };
-		593AAF822EC5AF55001EB388 /* KakaoSDKTemplate in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF812EC5AF55001EB388 /* KakaoSDKTemplate */; };
-		593AAF842EC5AF55001EB388 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 593AAF832EC5AF55001EB388 /* KakaoSDKUser */; };
+		597E3B942EC0D4D400539D21 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 597E3B932EC0D4D400539D21 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		59B1DE632E7BED30001A4DE7 /* PBXContainerItemProxy */ = {
+		598124752EC0CDFE007E982F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 59B1DE4D2E7BED2E001A4DE7 /* Project object */;
+			containerPortal = 5981245F2EC0CDFC007E982F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 59B1DE542E7BED2E001A4DE7;
-			remoteInfo = megabox;
+			remoteGlobalIDString = 598124662EC0CDFC007E982F;
+			remoteInfo = TestAlamofire;
 		};
-		59B1DE6D2E7BED30001A4DE7 /* PBXContainerItemProxy */ = {
+		5981247F2EC0CDFE007E982F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 59B1DE4D2E7BED2E001A4DE7 /* Project object */;
+			containerPortal = 5981245F2EC0CDFC007E982F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 59B1DE542E7BED2E001A4DE7;
-			remoteInfo = megabox;
+			remoteGlobalIDString = 598124662EC0CDFC007E982F;
+			remoteInfo = TestAlamofire;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		59B1DE552E7BED2E001A4DE7 /* megabox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = megabox.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		59B1DE622E7BED30001A4DE7 /* megaboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = megaboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		59B1DE6C2E7BED30001A4DE7 /* megaboxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = megaboxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		598124672EC0CDFC007E982F /* TestAlamofire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAlamofire.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		598124742EC0CDFE007E982F /* TestAlamofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAlamofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5981247E2EC0CDFE007E982F /* TestAlamofireUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestAlamofireUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		59B1DEBA2E7BEF52001A4DE7 /* Exceptions for "megabox" folder in "megabox" target */ = {
+		593AAF002EC37093001EB388 /* Exceptions for "TestAlamofire" folder in "TestAlamofire" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 59B1DE542E7BED2E001A4DE7 /* megabox */;
+			target = 598124662EC0CDFC007E982F /* TestAlamofire */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		59B1DE572E7BED2E001A4DE7 /* megabox */ = {
+		598124692EC0CDFC007E982F /* TestAlamofire */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				59B1DEBA2E7BEF52001A4DE7 /* Exceptions for "megabox" folder in "megabox" target */,
+				593AAF002EC37093001EB388 /* Exceptions for "TestAlamofire" folder in "TestAlamofire" target */,
 			);
-			path = megabox;
+			path = TestAlamofire;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		59B1DE522E7BED2E001A4DE7 /* Frameworks */ = {
+		598124642EC0CDFC007E982F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				593AAF6B2EC5AF0B001EB388 /* Alamofire in Frameworks */,
-				593AAF782EC5AF55001EB388 /* KakaoSDKFriend in Frameworks */,
-				593AAF6E2EC5AF55001EB388 /* KakaoSDK in Frameworks */,
-				593AAF7C2EC5AF55001EB388 /* KakaoSDKNavi in Frameworks */,
-				593AAF742EC5AF55001EB388 /* KakaoSDKCertCore in Frameworks */,
-				593AAF822EC5AF55001EB388 /* KakaoSDKTemplate in Frameworks */,
-				593AAF7A2EC5AF55001EB388 /* KakaoSDKFriendCore in Frameworks */,
-				593AAF702EC5AF55001EB388 /* KakaoSDKAuth in Frameworks */,
-				593AAF842EC5AF55001EB388 /* KakaoSDKUser in Frameworks */,
-				593AAF802EC5AF55001EB388 /* KakaoSDKTalk in Frameworks */,
-				593AAF7E2EC5AF55001EB388 /* KakaoSDKShare in Frameworks */,
-				593AAF762EC5AF55001EB388 /* KakaoSDKCommon in Frameworks */,
-				593AAF722EC5AF55001EB388 /* KakaoSDKCert in Frameworks */,
+				597E3B942EC0D4D400539D21 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B1DE5F2E7BED30001A4DE7 /* Frameworks */ = {
+		598124712EC0CDFE007E982F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B1DE692E7BED30001A4DE7 /* Frameworks */ = {
+		5981247B2EC0CDFE007E982F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -104,20 +80,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		59B1DE4C2E7BED2E001A4DE7 = {
+		5981245E2EC0CDFC007E982F = {
 			isa = PBXGroup;
 			children = (
-				59B1DE572E7BED2E001A4DE7 /* megabox */,
-				59B1DE562E7BED2E001A4DE7 /* Products */,
+				598124692EC0CDFC007E982F /* TestAlamofire */,
+				598124682EC0CDFC007E982F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		59B1DE562E7BED2E001A4DE7 /* Products */ = {
+		598124682EC0CDFC007E982F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59B1DE552E7BED2E001A4DE7 /* megabox.app */,
-				59B1DE622E7BED30001A4DE7 /* megaboxTests.xctest */,
-				59B1DE6C2E7BED30001A4DE7 /* megaboxUITests.xctest */,
+				598124672EC0CDFC007E982F /* TestAlamofire.app */,
+				598124742EC0CDFE007E982F /* TestAlamofireTests.xctest */,
+				5981247E2EC0CDFE007E982F /* TestAlamofireUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,145 +101,132 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		59B1DE542E7BED2E001A4DE7 /* megabox */ = {
+		598124662EC0CDFC007E982F /* TestAlamofire */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59B1DE762E7BED30001A4DE7 /* Build configuration list for PBXNativeTarget "megabox" */;
+			buildConfigurationList = 598124882EC0CDFE007E982F /* Build configuration list for PBXNativeTarget "TestAlamofire" */;
 			buildPhases = (
-				59B1DE512E7BED2E001A4DE7 /* Sources */,
-				59B1DE522E7BED2E001A4DE7 /* Frameworks */,
-				59B1DE532E7BED2E001A4DE7 /* Resources */,
+				598124632EC0CDFC007E982F /* Sources */,
+				598124642EC0CDFC007E982F /* Frameworks */,
+				598124652EC0CDFC007E982F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				59B1DE572E7BED2E001A4DE7 /* megabox */,
+				598124692EC0CDFC007E982F /* TestAlamofire */,
 			);
-			name = megabox;
+			name = TestAlamofire;
 			packageProductDependencies = (
-				593AAF6A2EC5AF0B001EB388 /* Alamofire */,
-				593AAF6D2EC5AF55001EB388 /* KakaoSDK */,
-				593AAF6F2EC5AF55001EB388 /* KakaoSDKAuth */,
-				593AAF712EC5AF55001EB388 /* KakaoSDKCert */,
-				593AAF732EC5AF55001EB388 /* KakaoSDKCertCore */,
-				593AAF752EC5AF55001EB388 /* KakaoSDKCommon */,
-				593AAF772EC5AF55001EB388 /* KakaoSDKFriend */,
-				593AAF792EC5AF55001EB388 /* KakaoSDKFriendCore */,
-				593AAF7B2EC5AF55001EB388 /* KakaoSDKNavi */,
-				593AAF7D2EC5AF55001EB388 /* KakaoSDKShare */,
-				593AAF7F2EC5AF55001EB388 /* KakaoSDKTalk */,
-				593AAF812EC5AF55001EB388 /* KakaoSDKTemplate */,
-				593AAF832EC5AF55001EB388 /* KakaoSDKUser */,
+				597E3B932EC0D4D400539D21 /* Alamofire */,
 			);
-			productName = megabox;
-			productReference = 59B1DE552E7BED2E001A4DE7 /* megabox.app */;
+			productName = TestAlamofire;
+			productReference = 598124672EC0CDFC007E982F /* TestAlamofire.app */;
 			productType = "com.apple.product-type.application";
 		};
-		59B1DE612E7BED30001A4DE7 /* megaboxTests */ = {
+		598124732EC0CDFE007E982F /* TestAlamofireTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59B1DE792E7BED30001A4DE7 /* Build configuration list for PBXNativeTarget "megaboxTests" */;
+			buildConfigurationList = 5981248B2EC0CDFE007E982F /* Build configuration list for PBXNativeTarget "TestAlamofireTests" */;
 			buildPhases = (
-				59B1DE5E2E7BED30001A4DE7 /* Sources */,
-				59B1DE5F2E7BED30001A4DE7 /* Frameworks */,
-				59B1DE602E7BED30001A4DE7 /* Resources */,
+				598124702EC0CDFE007E982F /* Sources */,
+				598124712EC0CDFE007E982F /* Frameworks */,
+				598124722EC0CDFE007E982F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				59B1DE642E7BED30001A4DE7 /* PBXTargetDependency */,
+				598124762EC0CDFE007E982F /* PBXTargetDependency */,
 			);
-			name = megaboxTests;
+			name = TestAlamofireTests;
 			packageProductDependencies = (
 			);
-			productName = megaboxTests;
-			productReference = 59B1DE622E7BED30001A4DE7 /* megaboxTests.xctest */;
+			productName = TestAlamofireTests;
+			productReference = 598124742EC0CDFE007E982F /* TestAlamofireTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		59B1DE6B2E7BED30001A4DE7 /* megaboxUITests */ = {
+		5981247D2EC0CDFE007E982F /* TestAlamofireUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59B1DE7C2E7BED30001A4DE7 /* Build configuration list for PBXNativeTarget "megaboxUITests" */;
+			buildConfigurationList = 5981248E2EC0CDFE007E982F /* Build configuration list for PBXNativeTarget "TestAlamofireUITests" */;
 			buildPhases = (
-				59B1DE682E7BED30001A4DE7 /* Sources */,
-				59B1DE692E7BED30001A4DE7 /* Frameworks */,
-				59B1DE6A2E7BED30001A4DE7 /* Resources */,
+				5981247A2EC0CDFE007E982F /* Sources */,
+				5981247B2EC0CDFE007E982F /* Frameworks */,
+				5981247C2EC0CDFE007E982F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				59B1DE6E2E7BED30001A4DE7 /* PBXTargetDependency */,
+				598124802EC0CDFE007E982F /* PBXTargetDependency */,
 			);
-			name = megaboxUITests;
+			name = TestAlamofireUITests;
 			packageProductDependencies = (
 			);
-			productName = megaboxUITests;
-			productReference = 59B1DE6C2E7BED30001A4DE7 /* megaboxUITests.xctest */;
+			productName = TestAlamofireUITests;
+			productReference = 5981247E2EC0CDFE007E982F /* TestAlamofireUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		59B1DE4D2E7BED2E001A4DE7 /* Project object */ = {
+		5981245F2EC0CDFC007E982F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					59B1DE542E7BED2E001A4DE7 = {
+					598124662EC0CDFC007E982F = {
 						CreatedOnToolsVersion = 16.4;
 					};
-					59B1DE612E7BED30001A4DE7 = {
+					598124732EC0CDFE007E982F = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 59B1DE542E7BED2E001A4DE7;
+						TestTargetID = 598124662EC0CDFC007E982F;
 					};
-					59B1DE6B2E7BED30001A4DE7 = {
+					5981247D2EC0CDFE007E982F = {
 						CreatedOnToolsVersion = 16.4;
-						TestTargetID = 59B1DE542E7BED2E001A4DE7;
+						TestTargetID = 598124662EC0CDFC007E982F;
 					};
 				};
 			};
-			buildConfigurationList = 59B1DE502E7BED2E001A4DE7 /* Build configuration list for PBXProject "megabox" */;
+			buildConfigurationList = 598124622EC0CDFC007E982F /* Build configuration list for PBXProject "TestAlamofire" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 59B1DE4C2E7BED2E001A4DE7;
+			mainGroup = 5981245E2EC0CDFC007E982F;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				593AAF692EC5AF0B001EB388 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				598124912EC0CE6F007E982F /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 59B1DE562E7BED2E001A4DE7 /* Products */;
+			productRefGroup = 598124682EC0CDFC007E982F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				59B1DE542E7BED2E001A4DE7 /* megabox */,
-				59B1DE612E7BED30001A4DE7 /* megaboxTests */,
-				59B1DE6B2E7BED30001A4DE7 /* megaboxUITests */,
+				598124662EC0CDFC007E982F /* TestAlamofire */,
+				598124732EC0CDFE007E982F /* TestAlamofireTests */,
+				5981247D2EC0CDFE007E982F /* TestAlamofireUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		59B1DE532E7BED2E001A4DE7 /* Resources */ = {
+		598124652EC0CDFC007E982F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B1DE602E7BED30001A4DE7 /* Resources */ = {
+		598124722EC0CDFE007E982F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B1DE6A2E7BED30001A4DE7 /* Resources */ = {
+		5981247C2EC0CDFE007E982F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,21 +236,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		59B1DE512E7BED2E001A4DE7 /* Sources */ = {
+		598124632EC0CDFC007E982F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B1DE5E2E7BED30001A4DE7 /* Sources */ = {
+		598124702EC0CDFE007E982F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59B1DE682E7BED30001A4DE7 /* Sources */ = {
+		5981247A2EC0CDFE007E982F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -297,21 +260,23 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		59B1DE642E7BED30001A4DE7 /* PBXTargetDependency */ = {
+		598124762EC0CDFE007E982F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 59B1DE542E7BED2E001A4DE7 /* megabox */;
-			targetProxy = 59B1DE632E7BED30001A4DE7 /* PBXContainerItemProxy */;
+			target = 598124662EC0CDFC007E982F /* TestAlamofire */;
+			targetProxy = 598124752EC0CDFE007E982F /* PBXContainerItemProxy */;
 		};
-		59B1DE6E2E7BED30001A4DE7 /* PBXTargetDependency */ = {
+		598124802EC0CDFE007E982F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 59B1DE542E7BED2E001A4DE7 /* megabox */;
-			targetProxy = 59B1DE6D2E7BED30001A4DE7 /* PBXContainerItemProxy */;
+			target = 598124662EC0CDFC007E982F /* TestAlamofire */;
+			targetProxy = 5981247F2EC0CDFE007E982F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		59B1DE742E7BED30001A4DE7 /* Debug */ = {
+		598124862EC0CDFE007E982F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 598124692EC0CDFC007E982F /* TestAlamofire */;
+			baseConfigurationReferenceRelativePath = Secret.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -374,8 +339,10 @@
 			};
 			name = Debug;
 		};
-		59B1DE752E7BED30001A4DE7 /* Release */ = {
+		598124872EC0CDFE007E982F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 598124692EC0CDFC007E982F /* TestAlamofire */;
+			baseConfigurationReferenceRelativePath = Secret.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -431,7 +398,7 @@
 			};
 			name = Release;
 		};
-		59B1DE772E7BED30001A4DE7 /* Debug */ = {
+		598124892EC0CDFE007E982F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -441,7 +408,7 @@
 				DEVELOPMENT_TEAM = PWP549GXXA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = megabox/Info.plist;
+				INFOPLIST_FILE = TestAlamofire/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -452,7 +419,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th.megabox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th..TestAlamofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -460,7 +427,7 @@
 			};
 			name = Debug;
 		};
-		59B1DE782E7BED30001A4DE7 /* Release */ = {
+		5981248A2EC0CDFE007E982F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -470,7 +437,7 @@
 				DEVELOPMENT_TEAM = PWP549GXXA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = megabox/Info.plist;
+				INFOPLIST_FILE = TestAlamofire/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -481,7 +448,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th.megabox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th..TestAlamofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -489,7 +456,7 @@
 			};
 			name = Release;
 		};
-		59B1DE7A2E7BED30001A4DE7 /* Debug */ = {
+		5981248C2EC0CDFE007E982F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -499,16 +466,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th.megaboxTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th..TestAlamofireTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/megabox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/megabox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestAlamofire.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TestAlamofire";
 			};
 			name = Debug;
 		};
-		59B1DE7B2E7BED30001A4DE7 /* Release */ = {
+		5981248D2EC0CDFE007E982F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -518,16 +485,16 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th.megaboxTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th..TestAlamofireTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/megabox.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/megabox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TestAlamofire.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TestAlamofire";
 			};
 			name = Release;
 		};
-		59B1DE7D2E7BED30001A4DE7 /* Debug */ = {
+		5981248F2EC0CDFE007E982F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -535,16 +502,16 @@
 				DEVELOPMENT_TEAM = PWP549GXXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th.megaboxUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th..TestAlamofireUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = megabox;
+				TEST_TARGET_NAME = TestAlamofire;
 			};
 			name = Debug;
 		};
-		59B1DE7E2E7BED30001A4DE7 /* Release */ = {
+		598124902EC0CDFE007E982F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -552,50 +519,50 @@
 				DEVELOPMENT_TEAM = PWP549GXXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th.megaboxUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.umc9th..TestAlamofireUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = megabox;
+				TEST_TARGET_NAME = TestAlamofire;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		59B1DE502E7BED2E001A4DE7 /* Build configuration list for PBXProject "megabox" */ = {
+		598124622EC0CDFC007E982F /* Build configuration list for PBXProject "TestAlamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59B1DE742E7BED30001A4DE7 /* Debug */,
-				59B1DE752E7BED30001A4DE7 /* Release */,
+				598124862EC0CDFE007E982F /* Debug */,
+				598124872EC0CDFE007E982F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		59B1DE762E7BED30001A4DE7 /* Build configuration list for PBXNativeTarget "megabox" */ = {
+		598124882EC0CDFE007E982F /* Build configuration list for PBXNativeTarget "TestAlamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59B1DE772E7BED30001A4DE7 /* Debug */,
-				59B1DE782E7BED30001A4DE7 /* Release */,
+				598124892EC0CDFE007E982F /* Debug */,
+				5981248A2EC0CDFE007E982F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		59B1DE792E7BED30001A4DE7 /* Build configuration list for PBXNativeTarget "megaboxTests" */ = {
+		5981248B2EC0CDFE007E982F /* Build configuration list for PBXNativeTarget "TestAlamofireTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59B1DE7A2E7BED30001A4DE7 /* Debug */,
-				59B1DE7B2E7BED30001A4DE7 /* Release */,
+				5981248C2EC0CDFE007E982F /* Debug */,
+				5981248D2EC0CDFE007E982F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		59B1DE7C2E7BED30001A4DE7 /* Build configuration list for PBXNativeTarget "megaboxUITests" */ = {
+		5981248E2EC0CDFE007E982F /* Build configuration list for PBXNativeTarget "TestAlamofireUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59B1DE7D2E7BED30001A4DE7 /* Debug */,
-				59B1DE7E2E7BED30001A4DE7 /* Release */,
+				5981248F2EC0CDFE007E982F /* Debug */,
+				598124902EC0CDFE007E982F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -603,91 +570,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		593AAF692EC5AF0B001EB388 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		598124912EC0CE6F007E982F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.10.2;
-			};
-		};
-		593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.26.0;
+				minimumVersion = 5.10.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		593AAF6A2EC5AF0B001EB388 /* Alamofire */ = {
+		597E3B932EC0D4D400539D21 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 593AAF692EC5AF0B001EB388 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 598124912EC0CE6F007E982F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		593AAF6D2EC5AF55001EB388 /* KakaoSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDK;
-		};
-		593AAF6F2EC5AF55001EB388 /* KakaoSDKAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKAuth;
-		};
-		593AAF712EC5AF55001EB388 /* KakaoSDKCert */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKCert;
-		};
-		593AAF732EC5AF55001EB388 /* KakaoSDKCertCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKCertCore;
-		};
-		593AAF752EC5AF55001EB388 /* KakaoSDKCommon */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKCommon;
-		};
-		593AAF772EC5AF55001EB388 /* KakaoSDKFriend */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKFriend;
-		};
-		593AAF792EC5AF55001EB388 /* KakaoSDKFriendCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKFriendCore;
-		};
-		593AAF7B2EC5AF55001EB388 /* KakaoSDKNavi */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKNavi;
-		};
-		593AAF7D2EC5AF55001EB388 /* KakaoSDKShare */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKShare;
-		};
-		593AAF7F2EC5AF55001EB388 /* KakaoSDKTalk */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKTalk;
-		};
-		593AAF812EC5AF55001EB388 /* KakaoSDKTemplate */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKTemplate;
-		};
-		593AAF832EC5AF55001EB388 /* KakaoSDKUser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 593AAF6C2EC5AF55001EB388 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
-			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 59B1DE4D2E7BED2E001A4DE7 /* Project object */;
+	rootObject = 5981245F2EC0CDFC007E982F /* Project object */;
 }
