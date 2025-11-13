@@ -17,7 +17,7 @@ enum ScreenType: String, Codable, CaseIterable {
 }
 
 struct Movie: Identifiable {
-    let id = UUID()
+    let id: String  // 서버에서 받은 id
     let title: String
     let poster: Image
 }

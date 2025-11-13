@@ -33,7 +33,10 @@ final class MovieReservationViewModel: ObservableObject {
     
     // MARK: - Init
     init() {
-        setupDummyData()
+        Task {
+            await fetchShowtimes()
+        }
+        
         setupBindings()
         
         $query
@@ -57,89 +60,45 @@ final class MovieReservationViewModel: ObservableObject {
             .store(in: &bag)
     }
     
-    // MARK: - 더미데이터
-    private func setupDummyData() {
-        let today = Date()
+    // MARK: - fetchShowtimes
+    func fetchShowtimes() async {
+        isLoading = true
         
-        // 영화 더미 데이터
-        let movie1 = Movie(title: "어쩔수가 없다 보스", poster: Image("poster1"))
-        let movie2 = Movie(title: "극장판 귀멸의 칼날 : 무한성편", poster: Image("poster2"))
-        let movie3 = Movie(title: "F1 더 무비", poster: Image("poster3"))
-        let movie4 = Movie(title: "얼굴", poster: Image("poster4"))
-        let movie5 = Movie(title: "모노노케 히메", poster: Image("poster5"))
-        let movie6 = Movie(title: "야당 보스", poster: Image("poster6"))
-        let movie7 = Movie(title: "보스", poster: Image("poster7"))
-        let movie8 = Movie(title: "The Roses", poster: Image("poster8"))
-
+        guard let url = Bundle.main.url(forResource: "MovieSchedule", withExtension: "json") else {
+            print("JSON 파일을 찾을 수 없습니다.")
+            errorMessage = "MovieSchedule.json 파일이 없습니다."
+            isLoading = false
+            return
+        }
         
-        movies = [
-            movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8
-        ]
-        
-        // 상영관
-        let hall1 = Hall(name: "크리클라이너 1관", totalSeatsCount: 116, screenType: .twoD)
-        let hall2 = Hall(name: "BST관 (7층 1관 [Laser])", totalSeatsCount: 120, screenType: .twoD)
-        let hall3 = Hall(name: "BTS관 (9층 2관 [Laser])", totalSeatsCount: 150, screenType: .fourD)
-        
-        // 🏢 극장 (지점)
-        let gangnam = Theater(name: "강남", halls: [hall1, hall2])
-        let hongdae = Theater(name: "홍대", halls: [hall1, hall2])
-        let sinchon = Theater(name: "신촌", halls: [hall3])
-        
-        theaters = [gangnam, hongdae, sinchon]
-        
-        // 🎞 상영정보 (Screening)
-        screenings = [
-            // 강남
-            Screening(movie: movie1, theater: gangnam, hall: hall1,
-                      date: today, startTime: "10:00", endTime: "12:30", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: gangnam, hall: hall1,
-                      date: today, startTime: "12:40", endTime: "15:10", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: gangnam, hall: hall1,
-                      date: today, startTime: "15:20", endTime: "17:50", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: gangnam, hall: hall2,
-                      date: today, startTime: "18:00", endTime: "20:30", reservedSeatsCount: 78),
-            Screening(movie: movie2, theater: gangnam, hall: hall1,
-                      date: today, startTime: "12:00", endTime: "15:30", reservedSeatsCount: 90),
-            Screening(movie: movie2, theater: hongdae, hall: hall2,
-                      date: today, startTime: "16:00", endTime: "18:10", reservedSeatsCount: 60),
-            Screening(movie: movie2, theater: gangnam, hall: hall1,
-                      date: today, startTime: "19:00", endTime: "21:30", reservedSeatsCount: 90),
+        do {
+            let data = try Data(contentsOf: url)
             
-            // 홍대
-            Screening(movie: movie1, theater: hongdae, hall: hall1,
-                      date: today, startTime: "11:30", endTime: "13:40", reservedSeatsCount: 50),
-            Screening(movie: movie2, theater: hongdae, hall: hall1,
-                      date: today, startTime: "19:00", endTime: "21:30", reservedSeatsCount: 90),
-            Screening(movie: movie2, theater: hongdae, hall: hall2,
-                      date: today, startTime: "16:00", endTime: "18:10", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: hongdae, hall: hall1,
-                      date: today, startTime: "10:00", endTime: "12:30", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: hongdae, hall: hall1,
-                      date: today, startTime: "12:40", endTime: "15:10", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: hongdae, hall: hall1,
-                      date: today, startTime: "15:20", endTime: "17:50", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: hongdae, hall: hall1,
-                      date: today, startTime: "15:20", endTime: "17:50", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: hongdae, hall: hall1,
-                      date: today, startTime: "15:20", endTime: "17:50", reservedSeatsCount: 60),
-            Screening(movie: movie1, theater: hongdae, hall: hall2,
-                      date: today, startTime: "18:00", endTime: "20:30", reservedSeatsCount: 78),
-            Screening(movie: movie2, theater: hongdae, hall: hall3,
-                      date: today, startTime: "12:00", endTime: "15:30", reservedSeatsCount: 90),
-            Screening(movie: movie2, theater: hongdae, hall: hall2,
-                      date: today, startTime: "16:00", endTime: "18:10", reservedSeatsCount: 60),
-            Screening(movie: movie2, theater: hongdae, hall: hall3,
-                      date: today, startTime: "19:00", endTime: "21:30", reservedSeatsCount: 90),
+            let response = try JSONDecoder().decode(APIResponseDTO.self, from: data)
             
-            // 신촌
-            Screening(movie: movie4, theater: sinchon, hall: hall3,
-                      date: today, startTime: "11:30", endTime: "13:40", reservedSeatsCount: 50),
-            Screening(movie: movie7, theater: sinchon, hall: hall3,
-                      date: today, startTime: "19:00", endTime: "21:30", reservedSeatsCount: 90),
-            Screening(movie: movie3, theater: sinchon, hall: hall3,
-                      date: today, startTime: "14:00", endTime: "16:00", reservedSeatsCount: 72)
-        ]
+            let domainMovies = response.data.movies.map(MovieMapper.toDomain)
+            let domainScreenings = response.data.movies.flatMap(MovieMapper.toScreenings)
+            
+            let theaterNames = Set(domainScreenings.map { $0.theater.name })
+            let domainTheaters = theaterNames.map { name -> Theater in
+                let halls = domainScreenings
+                    .filter { $0.theater.name == name }
+                    .map { $0.hall }
+                return Theater(name: name, halls: halls)
+            }
+            
+            self.movies = domainMovies
+            self.screenings = domainScreenings
+            self.theaters = domainTheaters
+            self.isLoading = false
+            
+            print("movies 개수:", self.movies.count)
+            
+        } catch {
+            self.errorMessage = "디코딩 실패: \(error.localizedDescription)"
+            self.isLoading = false
+            print("디코딩 실패: ", error)
+        }
     }
     
     // MARK: - Combine Bindings
@@ -207,6 +166,8 @@ final class MovieReservationViewModel: ObservableObject {
             selectedTheaters.contains(screening.theater.name) &&
             calendar.isDate(screening.date, inSameDayAs: selectedDate)
         }
+        
+        print("필터 결과:", filteredScreenings.map { "\($0.theater.name)-\($0.hall.name)" })
     }
     
     // MARK: - search 함수
