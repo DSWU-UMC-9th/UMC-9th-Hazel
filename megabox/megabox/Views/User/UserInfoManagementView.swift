@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct UserInfoManagementView: View {
-    @AppStorage("userName") private var userName: String = ""
-    @AppStorage("id") private var id: String = ""
-
+    let loginType: LoginType?
+    @Binding var userName: String
     @Environment(\.dismiss) var dismiss
-
+    
+    private var userId: String {
+        switch loginType {
+        case .local(let id):
+            return id
+        case .kakao(let id):
+            return id
+        default:
+            return "익명"
+        }
+    }
+    
     var body: some View {
         VStack {
             Header
@@ -55,7 +65,7 @@ struct UserInfoManagementView: View {
             
             VStack(spacing: 24) {
                 VStack(alignment: .leading, spacing: 3) {
-                    Text("\(id)")
+                    Text("\(userId)")
                         .font(.medium18)
                         .foregroundStyle(Color.black)
                     Divider()
@@ -70,7 +80,7 @@ struct UserInfoManagementView: View {
                         Spacer()
                         
                         Button {
-                            print("변경 : \(id), \(userName)")
+                            saveUserNameToKeychain()
                         } label: {
                             Text("변경")
                                 .font(.medium10)
@@ -90,8 +100,35 @@ struct UserInfoManagementView: View {
             }
         }
     }
+    
+    // 이름 변경 -> 저장 함수
+    private func saveUserNameToKeychain() {
+        switch loginType {
+        case .local(let id):
+            KeychainService.shared.savePasswordToKeychain(
+                account: "userName_\(id)",
+                service: "Megabox",
+                password: userName
+            )
+
+        case .kakao:
+            KeychainService.shared.savePasswordToKeychain(
+                account: "userName_kakao",
+                service: "Megabox",
+                password: userName
+            )
+
+        default:
+            break
+        }
+
+        print("이름 저장 완료:", userName)
+    }
 }
 
 #Preview {
-    UserInfoManagementView()
+    UserInfoManagementView(
+        loginType: .local(id: "test123"),
+        userName: .constant("익명")
+    )
 }

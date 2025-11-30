@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TabBar: View {
+    let loginType: LoginType?
+    
     var body: some View {
         TabView {
             Tab("홈", systemImage: "house.fill"){
@@ -20,7 +22,7 @@ struct TabBar: View {
                 
             }
             Tab("마이 페이지", systemImage: "person"){
-                UserInfoView()
+                UserInfoView(loginType: loginType)
             }
         }
         .navigationBarBackButtonHidden()
@@ -28,5 +30,5 @@ struct TabBar: View {
 }
 
 #Preview {
-    TabBar()
+    TabBar(loginType: nil)
 }
